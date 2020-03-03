@@ -1,0 +1,38 @@
+{% extends 'header.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+
+{% block body %}
+    <nav>
+        <a href="{{ path('accueil') }}">Accueil</a>
+
+
+        {% if app.user %}
+            |
+            <a href="{{ path('profil') }}">Mon profil</a>
+            |
+            <a href="{{ path('logout') }}">Déconnexion</a>
+            {% else %}
+                |
+                <a href="{{ path('login') }}">Se connecter</a>
+                |
+                <a href="{{ path('app_register') }}">Créer un compte</a>
+        {% endif %}
+    </nav>
+
+    <h1>Présentation</h1>
+        <p>Vianney MEDONNE, stagiaire pour la formation CDA BAC+4 à l'Eni école informatique.</p>
+        <p>Mon projet est simple(façon de dire), un reccueil de portefolio.</p>
+        <p>J'emploie le PHP avec le framework Symfony couplé d'une base de données MariaDB sur l'interface de PhpmyAdmin</p>
+
+    {% if app.user %}
+        <h1>Profils utilisateurs</h1>
+
+        {% for profils in profil %}
+            <h5><a href="{{ path('profil') }}">Utilisateur {{ profils.id }} : {{ profils.username }}</a></h5>
+
+         {% endfor %}
+    {% endif %}
+
+{% endblock %}

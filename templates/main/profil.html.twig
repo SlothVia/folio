@@ -1,0 +1,14 @@
+{% extends 'header.html.twig' %}
+
+
+{% block title %}Compte Utilisateur{% endblock %}
+
+{% block body %}
+
+    {{ profils.nom }}
+    {{ profils.prenom }}
+    {{ profils.email }}
+
+<a href="{{ path('competences') }}">Folio</a>
+
+{% endblock %}
